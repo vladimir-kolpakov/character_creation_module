@@ -135,32 +135,10 @@ def start_training(character):
     Возвращает сообщения о результатах цикла тренировки персонажа.
     """
     # Замените конструкцию условных операторов на словарь.
-    # game_commands = {'attack': attack(), 'defence': defence(), 'special': special()}
-    print(Character)
-    # char_class: Character = game_classes[selected_class](char_name)
-    '''
-    cmd = None
-    while cmd != 'skip':
-        cmd = input('Введи команду: ')
-        # Вместо блока условных операторов добавьте условие
-        # принадлежности введённой команды словарю.
-        # В функции print() будет вызываться метод класса,
-        # который соответствует введённой команде.
-        if cmd == 'attack':
-            print(attack(char_name, char_class))
-        if cmd == 'defence':
-            print(defence(char_name, char_class))
-        if cmd == 'special':
-            print(special(char_name, char_class))
-    return 'Тренировка окончена.'
-
-
-    if char_class == 'warrior':
-        print(f'{char_name}, ты Воитель — великий мастер ближнего боя.')
-    if char_class == 'mage':
-        print(f'{char_name}, ты Маг — превосходный укротитель стихий.')
-    if char_class == 'healer':
-        print(f'{char_name}, ты Лекарь — чародей, способный исцелять раны.')
+    commands = {'attack': Character.attack(),
+                'defence': Character.defence(),
+                'special': Character.special()
+                }
     print('Потренируйся управлять своими навыками.')
     print('Введи одну из команд: attack — чтобы атаковать противника, '
           'defence — чтобы блокировать атаку противника или '
@@ -173,12 +151,17 @@ def start_training(character):
         # принадлежности введённой команды словарю.
         # В функции print() будет вызываться метод класса,
         # который соответствует введённой команде.
-        if cmd == 'attack':
-            print(attack(char_name, char_class))
-        if cmd == 'defence':
-            print(defence(char_name, char_class))
-        if cmd == 'special':
-            print(special(char_name, char_class))
+        if cmd in commands:
+            print(commands[cmd](сharacter))
+
     return 'Тренировка окончена.'
-'''
-start_training()
+
+print('Приветствую тебя, искатель приключений!')
+print('Прежде чем начать игру...')
+char_name: str = input('...назови себя: ')
+print(f'Здравствуй, {char_name}! '
+       'Сейчас твоя выносливость — 80, атака — 5 и защита — 10.')
+print('Ты можешь выбрать один из трёх путей силы:')
+print('Воитель, Маг, Лекарь')
+choice_char_class(char_name)
+print(start_training(Character))
